@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using IBM.WatsonDeveloperCloud.Http.Filters;
+using System.Threading;
 
 namespace IBM.WatsonDeveloperCloud.Http
 {
@@ -33,20 +34,20 @@ namespace IBM.WatsonDeveloperCloud.Http
 
         IClient WithAuthentication(string userName, string password);
 
-        IRequest DeleteAsync(string resource);
+        IRequest DeleteAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest GetAsync(string resource);
+        IRequest GetAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PostAsync(string resource);
+        IRequest PostAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PostAsync<TBody>(string resource, TBody body);
+        IRequest PostAsync<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PutAsync(string resource);
+        IRequest PutAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PutAsync<TBody>(string resource, TBody body);
+        IRequest PutAsync<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest SendAsync(HttpMethod method, string resource);
+        IRequest SendAsync(HttpMethod method, string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest SendAsync(HttpRequestMessage message);
+        IRequest SendAsync(HttpRequestMessage message, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

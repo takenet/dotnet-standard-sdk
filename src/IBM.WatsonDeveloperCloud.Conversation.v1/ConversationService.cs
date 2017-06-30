@@ -21,6 +21,8 @@ using IBM.WatsonDeveloperCloud.Http;
 using IBM.WatsonDeveloperCloud.Service;
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace IBM.WatsonDeveloperCloud.Conversation.v1
 {
@@ -67,7 +69,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             this.Client = httpClient;
         }
 
-        public ExampleResponse CreateCounterexample(string workspaceId, CreateExample body)
+        public async Task<ExampleResponse> CreateCounterexampleAsync(string workspaceId, CreateExample body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -81,12 +83,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateExample>(body)
-                                .As<ExampleResponse>()
-                                .Result;
+                                .As<ExampleResponse>();
             }
             catch(AggregateException ae)
             {
@@ -96,7 +97,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public object DeleteCounterexample(string workspaceId, string text)
+        public async Task<object> DeleteCounterexampleAsync(string workspaceId, string text, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -110,11 +111,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
-                                .As<object>()
-                                .Result;
+                                .As<object>();
             }
             catch(AggregateException ae)
             {
@@ -124,7 +124,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ExampleResponse GetCounterexample(string workspaceId, string text)
+        public async Task<ExampleResponse> GetCounterexampleAsync(string workspaceId, string text, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -138,11 +138,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
-                                .As<ExampleResponse>()
-                                .Result;
+                                .As<ExampleResponse>();
             }
             catch(AggregateException ae)
             {
@@ -152,7 +151,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public CounterexampleCollectionResponse ListCounterexamples(string workspaceId, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public async Task<CounterexampleCollectionResponse> ListCounterexamplesAsync(string workspaceId, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -164,15 +163,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("page_limit", pageLimit)
                                 .WithArgument("include_count", includeCount)
                                 .WithArgument("sort", sort)
                                 .WithArgument("cursor", cursor)
-                                .As<CounterexampleCollectionResponse>()
-                                .Result;
+                                .As<CounterexampleCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -182,7 +180,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ExampleResponse UpdateCounterexample(string workspaceId, string text, UpdateExample body)
+        public async Task<ExampleResponse> UpdateCounterexampleAsync(string workspaceId, string text, UpdateExample body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -198,12 +196,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateExample>(body)
-                                .As<ExampleResponse>()
-                                .Result;
+                                .As<ExampleResponse>();
             }
             catch(AggregateException ae)
             {
@@ -212,7 +209,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public EntityResponse CreateEntity(string workspaceId, CreateEntity body)
+        public async Task<EntityResponse> CreateEntityAsync(string workspaceId, CreateEntity body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -226,12 +223,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateEntity>(body)
-                                .As<EntityResponse>()
-                                .Result;
+                                .As<EntityResponse>();
             }
             catch(AggregateException ae)
             {
@@ -241,7 +237,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public object DeleteEntity(string workspaceId, string entity)
+        public async Task<object> DeleteEntityAsync(string workspaceId, string entity, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -255,11 +251,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
-                                .As<object>()
-                                .Result;
+                                .As<object>();
             }
             catch(AggregateException ae)
             {
@@ -269,7 +264,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public EntityExportResponse GetEntity(string workspaceId, string entity, bool? export = null)
+        public async Task<EntityExportResponse> GetEntityAsync(string workspaceId, string entity, bool? export = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -283,12 +278,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
-                                .As<EntityExportResponse>()
-                                .Result;
+                                .As<EntityExportResponse>();
             }
             catch(AggregateException ae)
             {
@@ -298,7 +292,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public EntityCollectionResponse ListEntities(string workspaceId, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public async Task<EntityCollectionResponse> ListEntitiesAsync(string workspaceId, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -310,7 +304,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
@@ -318,8 +312,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
                                 .WithArgument("include_count", includeCount)
                                 .WithArgument("sort", sort)
                                 .WithArgument("cursor", cursor)
-                                .As<EntityCollectionResponse>()
-                                .Result;
+                                .As<EntityCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -329,7 +322,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public EntityResponse UpdateEntity(string workspaceId, string entity, UpdateEntity body)
+        public async Task<EntityResponse> UpdateEntityAsync(string workspaceId, string entity, UpdateEntity body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -345,12 +338,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateEntity>(body)
-                                .As<EntityResponse>()
-                                .Result;
+                                .As<EntityResponse>();
             }
             catch(AggregateException ae)
             {
@@ -359,7 +351,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public ExampleResponse CreateExample(string workspaceId, string intent, CreateExample body)
+        public async Task<ExampleResponse> CreateExampleAsync(string workspaceId, string intent, CreateExample body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -375,12 +367,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateExample>(body)
-                                .As<ExampleResponse>()
-                                .Result;
+                                .As<ExampleResponse>();
             }
             catch(AggregateException ae)
             {
@@ -390,7 +381,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public object DeleteExample(string workspaceId, string intent, string text)
+        public async Task<object> DeleteExampleAsync(string workspaceId, string intent, string text, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -406,11 +397,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
-                                .As<object>()
-                                .Result;
+                                .As<object>();
             }
             catch(AggregateException ae)
             {
@@ -420,7 +410,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ExampleResponse GetExample(string workspaceId, string intent, string text)
+        public async Task<ExampleResponse> GetExampleAsync(string workspaceId, string intent, string text, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -436,11 +426,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
-                                .As<ExampleResponse>()
-                                .Result;
+                                .As<ExampleResponse>();
             }
             catch(AggregateException ae)
             {
@@ -450,7 +439,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ExampleCollectionResponse ListExamples(string workspaceId, string intent, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public async Task<ExampleCollectionResponse> ListExamplesAsync(string workspaceId, string intent, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -464,15 +453,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("page_limit", pageLimit)
                                 .WithArgument("include_count", includeCount)
                                 .WithArgument("sort", sort)
                                 .WithArgument("cursor", cursor)
-                                .As<ExampleCollectionResponse>()
-                                .Result;
+                                .As<ExampleCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -482,7 +470,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ExampleResponse UpdateExample(string workspaceId, string intent, string text, UpdateExample body)
+        public async Task<ExampleResponse> UpdateExampleAsync(string workspaceId, string intent, string text, UpdateExample body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -500,12 +488,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateExample>(body)
-                                .As<ExampleResponse>()
-                                .Result;
+                                .As<ExampleResponse>();
             }
             catch(AggregateException ae)
             {
@@ -514,7 +501,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public IntentResponse CreateIntent(string workspaceId, CreateIntent body)
+        public async Task<IntentResponse> CreateIntentAsync(string workspaceId, CreateIntent body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -528,12 +515,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateIntent>(body)
-                                .As<IntentResponse>()
-                                .Result;
+                                .As<IntentResponse>();
             }
             catch(AggregateException ae)
             {
@@ -543,7 +529,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public object DeleteIntent(string workspaceId, string intent)
+        public async Task<object> DeleteIntentAsync(string workspaceId, string intent, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -557,11 +543,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
-                                .As<object>()
-                                .Result;
+                                .As<object>();
             }
             catch(AggregateException ae)
             {
@@ -571,7 +556,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public IntentExportResponse GetIntent(string workspaceId, string intent, bool? export = null)
+        public async Task<IntentExportResponse> GetIntentAsync(string workspaceId, string intent, bool? export = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -585,12 +570,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
-                                .As<IntentExportResponse>()
-                                .Result;
+                                .As<IntentExportResponse>();
             }
             catch(AggregateException ae)
             {
@@ -600,7 +584,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public IntentCollectionResponse ListIntents(string workspaceId, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public async Task<IntentCollectionResponse> ListIntentsAsync(string workspaceId, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -612,7 +596,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
@@ -620,8 +604,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
                                 .WithArgument("include_count", includeCount)
                                 .WithArgument("sort", sort)
                                 .WithArgument("cursor", cursor)
-                                .As<IntentCollectionResponse>()
-                                .Result;
+                                .As<IntentCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -631,7 +614,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public IntentResponse UpdateIntent(string workspaceId, string intent, UpdateIntent body)
+        public async Task<IntentResponse> UpdateIntentAsync(string workspaceId, string intent, UpdateIntent body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -647,12 +630,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateIntent>(body)
-                                .As<IntentResponse>()
-                                .Result;
+                                .As<IntentResponse>();
             }
             catch(AggregateException ae)
             {
@@ -661,7 +643,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public LogCollectionResponse ListLogs(string workspaceId, string sort = null, string filter = null, long? pageLimit = null, string cursor = null)
+        public async Task<LogCollectionResponse> ListLogsAsync(string workspaceId, string sort = null, string filter = null, long? pageLimit = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -673,15 +655,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/logs")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("sort", sort)
                                 .WithArgument("filter", filter)
                                 .WithArgument("page_limit", pageLimit)
                                 .WithArgument("cursor", cursor)
-                                .As<LogCollectionResponse>()
-                                .Result;
+                                .As<LogCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -690,7 +671,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public MessageResponse Message(string workspaceId, MessageRequest body = null)
+        public async Task<MessageResponse> MessageAsync(string workspaceId, MessageRequest body = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -702,12 +683,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/message")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<MessageRequest>(body)
-                                .As<MessageResponse>()
-                                .Result;
+                                .As<MessageResponse>();
             }
             catch(AggregateException ae)
             {
@@ -716,7 +696,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public SynonymResponse CreateSynonym(string workspaceId, string entity, string value, CreateSynonym body)
+        public async Task<SynonymResponse> CreateSynonymAsync(string workspaceId, string entity, string value, CreateSynonym body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -734,12 +714,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateSynonym>(body)
-                                .As<SynonymResponse>()
-                                .Result;
+                                .As<SynonymResponse>();
             }
             catch(AggregateException ae)
             {
@@ -749,7 +728,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public object DeleteSynonym(string workspaceId, string entity, string value, string synonym)
+        public async Task<object> DeleteSynonymAsync(string workspaceId, string entity, string value, string synonym, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -767,11 +746,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
-                                .As<object>()
-                                .Result;
+                                .As<object>();
             }
             catch(AggregateException ae)
             {
@@ -781,7 +759,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public SynonymResponse GetSynonym(string workspaceId, string entity, string value, string synonym)
+        public async Task<SynonymResponse> GetSynonymAsync(string workspaceId, string entity, string value, string synonym, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -799,11 +777,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
-                                .As<SynonymResponse>()
-                                .Result;
+                                .As<SynonymResponse>();
             }
             catch(AggregateException ae)
             {
@@ -813,7 +790,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public SynonymCollectionResponse ListSynonyms(string workspaceId, string entity, string value, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public async Task<SynonymCollectionResponse> ListSynonymsAsync(string workspaceId, string entity, string value, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -829,15 +806,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("page_limit", pageLimit)
                                 .WithArgument("include_count", includeCount)
                                 .WithArgument("sort", sort)
                                 .WithArgument("cursor", cursor)
-                                .As<SynonymCollectionResponse>()
-                                .Result;
+                                .As<SynonymCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -847,7 +823,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public SynonymResponse UpdateSynonym(string workspaceId, string entity, string value, string synonym, UpdateSynonym body)
+        public async Task<SynonymResponse> UpdateSynonymAsync(string workspaceId, string entity, string value, string synonym, UpdateSynonym body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -867,12 +843,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateSynonym>(body)
-                                .As<SynonymResponse>()
-                                .Result;
+                                .As<SynonymResponse>();
             }
             catch(AggregateException ae)
             {
@@ -881,7 +856,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public ValueResponse CreateValue(string workspaceId, string entity, CreateValue body)
+        public async Task<ValueResponse> CreateValueAsync(string workspaceId, string entity, CreateValue body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -897,12 +872,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateValue>(body)
-                                .As<ValueResponse>()
-                                .Result;
+                                .As<ValueResponse>();
             }
             catch(AggregateException ae)
             {
@@ -912,7 +886,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public object DeleteValue(string workspaceId, string entity, string value)
+        public async Task<object> DeleteValueAsync(string workspaceId, string entity, string value, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -928,11 +902,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
-                                .As<object>()
-                                .Result;
+                                .As<object>();
             }
             catch(AggregateException ae)
             {
@@ -942,7 +915,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ValueExportResponse GetValue(string workspaceId, string entity, string value, bool? export = null)
+        public async Task<ValueExportResponse> GetValueAsync(string workspaceId, string entity, string value, bool? export = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -958,12 +931,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
-                                .As<ValueExportResponse>()
-                                .Result;
+                                .As<ValueExportResponse>();
             }
             catch(AggregateException ae)
             {
@@ -973,7 +945,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ValueCollectionResponse ListValues(string workspaceId, string entity, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public async Task<ValueCollectionResponse> ListValuesAsync(string workspaceId, string entity, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -987,7 +959,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
@@ -995,8 +967,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
                                 .WithArgument("include_count", includeCount)
                                 .WithArgument("sort", sort)
                                 .WithArgument("cursor", cursor)
-                                .As<ValueCollectionResponse>()
-                                .Result;
+                                .As<ValueCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -1006,7 +977,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ValueResponse UpdateValue(string workspaceId, string entity, string value, UpdateValue body)
+        public async Task<ValueResponse> UpdateValueAsync(string workspaceId, string entity, string value, UpdateValue body, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -1024,12 +995,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateValue>(body)
-                                .As<ValueResponse>()
-                                .Result;
+                                .As<ValueResponse>();
             }
             catch(AggregateException ae)
             {
@@ -1038,7 +1008,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public WorkspaceResponse CreateWorkspace(CreateWorkspace body = null)
+        public async Task<WorkspaceResponse> CreateWorkspaceAsync(CreateWorkspace body = null, CancellationToken cancellationToken = default(CancellationToken))
         {
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1048,12 +1018,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateWorkspace>(body)
-                                .As<WorkspaceResponse>()
-                                .Result;
+                                .As<WorkspaceResponse>();
             }
             catch(AggregateException ae)
             {
@@ -1063,7 +1032,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public object DeleteWorkspace(string workspaceId)
+        public async Task<object> DeleteWorkspaceAsync(string workspaceId, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -1075,11 +1044,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
-                                .As<object>()
-                                .Result;
+                                .As<object>();
             }
             catch(AggregateException ae)
             {
@@ -1089,7 +1057,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public WorkspaceExportResponse GetWorkspace(string workspaceId, bool? export = null)
+        public async Task<WorkspaceExportResponse> GetWorkspaceAsync(string workspaceId, bool? export = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -1101,12 +1069,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
-                                .As<WorkspaceExportResponse>()
-                                .Result;
+                                .As<WorkspaceExportResponse>();
             }
             catch(AggregateException ae)
             {
@@ -1116,7 +1083,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public WorkspaceCollectionResponse ListWorkspaces(long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public async Task<WorkspaceCollectionResponse> ListWorkspacesAsync(long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null, CancellationToken cancellationToken = default(CancellationToken))
         {
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1126,15 +1093,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("page_limit", pageLimit)
                                 .WithArgument("include_count", includeCount)
                                 .WithArgument("sort", sort)
                                 .WithArgument("cursor", cursor)
-                                .As<WorkspaceCollectionResponse>()
-                                .Result;
+                                .As<WorkspaceCollectionResponse>();
             }
             catch(AggregateException ae)
             {
@@ -1144,7 +1110,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public WorkspaceResponse UpdateWorkspace(string workspaceId, UpdateWorkspace body = null)
+        public async Task<WorkspaceResponse> UpdateWorkspaceAsync(string workspaceId, UpdateWorkspace body = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -1156,12 +1122,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                result = await this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateWorkspace>(body)
-                                .As<WorkspaceResponse>()
-                                .Result;
+                                .As<WorkspaceResponse>();
             }
             catch(AggregateException ae)
             {

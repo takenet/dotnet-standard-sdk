@@ -22,6 +22,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
 using IBM.WatsonDeveloperCloud.Http.Filters;
+using System.Threading;
 
 namespace IBM.WatsonDeveloperCloud.Http
 {
@@ -82,49 +83,49 @@ namespace IBM.WatsonDeveloperCloud.Http
             return this;
         }
 
-        public IRequest DeleteAsync(string resource)
+        public IRequest DeleteAsync(string resource, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.SendAsync(HttpMethod.Delete, resource);
+            return this.SendAsync(HttpMethod.Delete, resource, cancellationToken);
         }
 
-        public IRequest GetAsync(string resource)
+        public IRequest GetAsync(string resource, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.SendAsync(HttpMethod.Get, resource);
+            return this.SendAsync(HttpMethod.Get, resource, cancellationToken);
         }
 
-        public IRequest PostAsync(string resource)
+        public IRequest PostAsync(string resource, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.SendAsync(HttpMethod.Post, resource);
+            return this.SendAsync(HttpMethod.Post, resource, cancellationToken);
         }
 
-        public IRequest PostAsync<TBody>(string resource, TBody body)
+        public IRequest PostAsync<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync(resource).WithBody(body);
+            return this.PostAsync(resource, cancellationToken).WithBody(body);
         }
 
-        public IRequest PutAsync(string resource)
+        public IRequest PutAsync(string resource, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.SendAsync(HttpMethod.Put, resource);
+            return this.SendAsync(HttpMethod.Put, resource, cancellationToken);
         }
 
-        public IRequest PutAsync<TBody>(string resource, TBody body)
+        public IRequest PutAsync<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PutAsync(resource).WithBody(body);
+            return this.PutAsync(resource, cancellationToken).WithBody(body);
         }
 
-        public virtual IRequest SendAsync(HttpMethod method, string resource)
+        public virtual IRequest SendAsync(HttpMethod method, string resource, CancellationToken cancellationToken = default(CancellationToken))
         {
             this.AssertNotDisposed();
 
             Uri uri = new Uri(this.BaseClient.BaseAddress, resource);
             HttpRequestMessage message = HttpFactory.GetRequestMessage(method, uri, this.Formatters);
-            return this.SendAsync(message);
+            return this.SendAsync(message, cancellationToken);
         }
 
-        public virtual IRequest SendAsync(HttpRequestMessage message)
+        public virtual IRequest SendAsync(HttpRequestMessage message, CancellationToken cancellationToken = default(CancellationToken))
         {
             this.AssertNotDisposed();
-            return new Request(message, this.Formatters, request => this.BaseClient.SendAsync(request.Message), this.Filters.ToArray());
+            return new Request(message, this.Formatters, request => this.BaseClient.SendAsync(request.Message, cancellationToken), this.Filters.ToArray());
         }
 
         public virtual void Dispose()
