@@ -76,7 +76,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
         public List<Voice> GetVoices()
         {
             return Client.WithAuthentication(this.UserName, this.Password)
-                          .GetAsync(this.Endpoint + PATH_VOICES)
+                          .Get(this.Endpoint + PATH_VOICES)
                           .As<Voices>()
                           .Result.VoiceList;
         }
@@ -87,7 +87,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
                 throw new ArgumentNullException("Parameter 'voiceName' must be provided");
 
             return Client.WithAuthentication(this.UserName, this.Password)
-                          .GetAsync(this.Endpoint + string.Format(PATH_VOICE, voiceName))
+                          .Get(this.Endpoint + string.Format(PATH_VOICE, voiceName))
                           .As<Voice>()
                           .Result;
 
@@ -115,7 +115,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
 
             var builder =
             Client.WithAuthentication(this.UserName, this.Password)
-                          .GetAsync(this.Endpoint + PATH_PRONUNCIATION)
+                          .Get(this.Endpoint + PATH_PRONUNCIATION)
                           .WithArgument("text", text);
 
             if (voice != null)
@@ -150,7 +150,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
 
             var builder =
             Client.WithAuthentication(this.UserName, this.Password)
-                          .GetAsync(this.Endpoint + PATH_SYNTHESIZE)
+                          .Get(this.Endpoint + PATH_SYNTHESIZE)
                           .WithArgument("text", text)
                           .WithArgument("voice", voice.Name)
                           .WithArgument("accept", audioType.Value);
@@ -166,7 +166,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
         public List<CustomVoiceModel> GetCustomVoiceModels(string language)
         {
             var ret = Client.WithAuthentication(this.UserName, this.Password)
-                          .GetAsync(this.Endpoint + PATH_CUSTOMIZATIONS);
+                          .Get(this.Endpoint + PATH_CUSTOMIZATIONS);
 
             if (!string.IsNullOrEmpty(language))
                 ret.WithArgument("language", language);
@@ -181,7 +181,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
                 throw new ArgumentNullException("ModelId must not be empty");
 
             return Client.WithAuthentication(this.UserName, this.Password)
-                          .GetAsync(this.Endpoint + string.Format(PATH_CUSTOMIZATION, modelId))
+                          .Get(this.Endpoint + string.Format(PATH_CUSTOMIZATION, modelId))
                           .As<CustomVoiceModel>()
                           .Result;
         }
@@ -208,7 +208,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
             string s = JsonConvert.SerializeObject(updateModel);
             var retorno =
                 Client.WithAuthentication(this.UserName, this.Password)
-                    .PostAsync(this.Endpoint + path, updateModel)
+                    .Post(this.Endpoint + path, updateModel)
                     .WithBody<CustomVoiceModelUpdate>(updateModel)
                     .AsMessage();
 
@@ -228,7 +228,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
 
             var retorno =
                 Client.WithAuthentication(this.UserName, this.Password)
-                    .PostAsync(this.Endpoint + path)
+                    .Post(this.Endpoint + path)
                     .WithBody<CustomVoiceModelCreate>(createModel)
                     .As<CustomVoiceModel>()
                     .Result;
@@ -252,7 +252,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
                 throw new ArgumentNullException("Model id must not be empty");
 
             Client.WithAuthentication(this.UserName, this.Password)
-                          .DeleteAsync(this.Endpoint + string.Format(PATH_CUSTOMIZATION, modelID))
+                          .Delete(this.Endpoint + string.Format(PATH_CUSTOMIZATION, modelID))
                           .AsMessage();
         }
 
@@ -270,7 +270,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
                 throw new ArgumentNullException("Model id must not be empty");
 
             return Client.WithAuthentication(this.UserName, this.Password)
-                          .GetAsync(this.Endpoint + string.Format(PATH_WORDS, modelID))
+                          .Get(this.Endpoint + string.Format(PATH_WORDS, modelID))
                           .As<CustomWordTranslations>()
                           .Result.Words;
         }
@@ -300,7 +300,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
             };
 
             var x = Client.WithAuthentication(this.UserName, this.Password)
-                      .PostAsync(this.Endpoint + string.Format(PATH_WORDS, modelID))
+                      .Post(this.Endpoint + string.Format(PATH_WORDS, modelID))
                       .WithBody<CustomWordTranslations>(customWordTranslations)
                       .AsMessage().Result;
         }
@@ -347,7 +347,7 @@ namespace IBM.WatsonDeveloperCloud.TextToSpeech.v1
                 throw new ArgumentNullException("Word must not be empty");
 
             var r = Client.WithAuthentication(this.UserName, this.Password)
-              .DeleteAsync(this.Endpoint + string.Format(PATH_WORD, modelID, word))
+              .Delete(this.Endpoint + string.Format(PATH_WORD, modelID, word))
               .AsMessage()
               .Result;
         }

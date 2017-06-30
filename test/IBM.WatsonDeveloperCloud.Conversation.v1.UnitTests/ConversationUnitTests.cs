@@ -142,7 +142,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -166,7 +166,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -196,7 +196,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.CreateCounterexample("workspaceId", example);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Text == "text");
         }
         #endregion
@@ -230,7 +230,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -250,7 +250,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -268,7 +268,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.DeleteCounterexample("workspaceId", "example");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -301,7 +301,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -320,7 +320,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -343,7 +343,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.GetCounterexample("workspaceId", "text");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Text == "text");
         }
         #endregion
@@ -370,7 +370,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -389,7 +389,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -426,7 +426,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListCounterexamples("workspaceId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Counterexamples);
             Assert.IsTrue(result.Counterexamples.Count > 0);
             Assert.IsTrue(!string.IsNullOrEmpty(result.Counterexamples[0].Text));
@@ -488,7 +488,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -512,7 +512,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -542,7 +542,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.UpdateCounterexample("workspaceId", "text", example);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Text == "text");
         }
         #endregion
@@ -592,7 +592,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -617,7 +617,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -649,7 +649,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.CreateEntity("workspaceId", entity);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Entity);
             Assert.IsTrue(result.Entity == "entity");
             Assert.IsNotNull(result.Description);
@@ -686,7 +686,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -706,7 +706,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -724,7 +724,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.DeleteEntity("workspaceId", "entity");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -757,7 +757,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -776,7 +776,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -800,7 +800,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.GetEntity("workspaceId", "entity");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Entity);
             Assert.IsTrue(result.Entity == "entity");
             Assert.IsNotNull(result.Description);
@@ -830,7 +830,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -849,7 +849,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -912,7 +912,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListEntities("workspaceId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Entities);
             Assert.IsTrue(result.Entities.Count > 0);
             Assert.IsNotNull(result.Entities[0].Created);
@@ -1037,7 +1037,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1076,7 +1076,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1124,7 +1124,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.UpdateEntity("workspaceId", "text", entity);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
             Assert.IsTrue(!string.IsNullOrEmpty(result.Entity));
@@ -1190,7 +1190,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1214,7 +1214,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1244,7 +1244,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.CreateExample("workspaceId", "intent", example);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Text == "text");
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
@@ -1288,7 +1288,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1308,7 +1308,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1326,7 +1326,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.DeleteExample("workspaceId", "intent", "example");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -1366,7 +1366,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1385,7 +1385,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1408,7 +1408,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.GetExample("workspaceId", "intent", "example");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Text == "text");
         }
         #endregion
@@ -1442,7 +1442,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1461,7 +1461,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1498,7 +1498,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListExamples("workspaceId", "intent");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Examples);
             Assert.IsTrue(result.Examples.Count > 0);
             Assert.IsTrue(!string.IsNullOrEmpty(result.Examples[0].Text));
@@ -1573,7 +1573,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1597,7 +1597,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1627,7 +1627,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.UpdateExample("workspaceId", "intent", "text", example);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Text == "text");
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
@@ -1692,7 +1692,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1724,7 +1724,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1763,7 +1763,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.CreateIntent("workspaceId", Intent);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Intent == "intent");
             Assert.IsTrue(result.Description == "description");
             Assert.IsNotNull(result.Created);
@@ -1800,7 +1800,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1820,7 +1820,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1838,7 +1838,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.DeleteIntent("workspaceId", "intent");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -1871,7 +1871,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1890,7 +1890,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1925,7 +1925,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.GetIntent("workspaceId", "text");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Intent == "intent");
             Assert.IsTrue(result.Description == "description");
             Assert.IsNotNull(result.Created);
@@ -1960,7 +1960,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1979,7 +1979,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2028,7 +2028,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListIntents("workspaceId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Intents);
             Assert.IsTrue(result.Intents.Count > 0);
             Assert.IsTrue(!string.IsNullOrEmpty(result.Intents[0].Intent));
@@ -2121,7 +2121,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2153,7 +2153,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2192,7 +2192,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.UpdateIntent("workspaceId", "text", intent);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Intent == "intent");
             Assert.IsTrue(result.Description == "description");
         }
@@ -2221,7 +2221,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2240,7 +2240,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2394,7 +2394,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListLogs("workspaceId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Logs);
             Assert.IsTrue(result.Logs.Count > 0);
             Assert.IsNotNull(result.Pagination);
@@ -2548,7 +2548,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2626,7 +2626,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2760,7 +2760,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.Message("workspaceId", message);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Input);
             Assert.IsNotNull(result.Intents);
             Assert.IsNotNull(result.Entities);
@@ -2835,7 +2835,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2859,7 +2859,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2889,7 +2889,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.CreateSynonym("workspaceId", "entity", "value", synonym);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Synonym);
             Assert.IsTrue(result.Synonym == "synonym");
             Assert.IsNotNull(result.Created);
@@ -2940,7 +2940,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2960,7 +2960,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2978,7 +2978,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.DeleteSynonym("workspaceId", "entity", "value", "synonym");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -3025,7 +3025,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3044,7 +3044,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3067,7 +3067,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.GetSynonym("workspaceId", "entity", "value", "synonym");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Synonym);
             Assert.IsTrue(result.Synonym == "synonym");
             Assert.IsNotNull(result.Created);
@@ -3111,7 +3111,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3130,7 +3130,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3176,7 +3176,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListSynonyms("workspaceId", "entity", "value");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Synonyms);
             Assert.IsTrue(result.Synonyms.Count > 0);
             Assert.IsNotNull(result.Synonyms[0].Created);
@@ -3266,7 +3266,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3290,7 +3290,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3320,7 +3320,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.UpdateSynonym("workspaceId", "entity", "value", "synonym", synonym);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
             Assert.IsTrue(result.Synonym == "synonym");
@@ -3395,7 +3395,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3424,7 +3424,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3460,7 +3460,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.CreateValue("workspaceId", "entity", value);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Value == "value");
             Assert.IsNotNull(result.Metadata);
             Assert.IsNotNull(result.Created);
@@ -3504,7 +3504,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3524,7 +3524,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3542,7 +3542,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.DeleteValue("workspaceId", "entity", "example");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -3582,7 +3582,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3601,7 +3601,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3629,7 +3629,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.GetValue("workspaceId", "entity", "value");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
             Assert.IsNotNull(result.Metadata);
@@ -3669,7 +3669,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3688,7 +3688,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3739,7 +3739,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListValues("workspaceId", "entity");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Values);
             Assert.IsTrue(result.Values.Count > 0);
             Assert.IsTrue(result.Values[0].Value == "value");
@@ -3840,7 +3840,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3869,7 +3869,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -3905,7 +3905,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.UpdateValue("workspaceId", "entity", "value", value);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Value == "value");
             Assert.IsNotNull(result.Metadata);
@@ -3940,7 +3940,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3971,7 +3971,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -4008,7 +4008,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.CreateWorkspace(workspace);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Metadata);
@@ -4042,7 +4042,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -4062,7 +4062,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -4080,7 +4080,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.DeleteWorkspace("workspaceId");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -4106,7 +4106,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -4125,7 +4125,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -4212,7 +4212,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.GetWorkspace("workspaceId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Metadata);
@@ -4239,7 +4239,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -4258,7 +4258,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -4306,7 +4306,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.ListWorkspaces();
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Pagination.RefreshUrl == "refreshUrl");
             Assert.IsTrue(result.Pagination.NextUrl == "nextUrl");
             Assert.IsTrue(result.Pagination.Total == 1);
@@ -4345,7 +4345,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -4365,7 +4365,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -4450,7 +4450,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var result = service.UpdateWorkspace("workspaceId", workspace);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Metadata);

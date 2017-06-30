@@ -118,7 +118,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
                 }
             };
 
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -145,7 +145,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifications = service.Classify("url-to-classify");
 
             Assert.IsNotNull(classifications);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(classifications.Images.Count > 0);
             Assert.IsTrue(classifications.Images[0].Classifiers[0].Classes[0]._Class == "turtle");
             Assert.IsTrue(classifications.Images[0].Classifiers[0].Classes[0].Score == 0.98f);
@@ -204,7 +204,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             ClassifyPost response = new ClassifyPost()
@@ -250,7 +250,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifications = service.Classify(new byte[4], "name", "image/jpeg");
 
             Assert.IsNotNull(classifications);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(classifications.Images.Count > 0);
             Assert.IsTrue(classifications.Images[0]._Classifiers[0].Classes[0]._Class == "turtle");
             Assert.IsTrue(classifications.Images[0]._Classifiers[0].Classes[0].Score == 0.98f);
@@ -325,7 +325,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
                 }
             };
 
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -344,7 +344,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifications = service.DetectFaces("url-to-classify");
 
             Assert.IsNotNull(classifications);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
 
             Assert.IsTrue(classifications.Images.Count > 0);
             Assert.IsTrue(classifications.Images[0].Faces[0].Identity.Name == "Sneaky Snake");
@@ -405,7 +405,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             Faces response = new Faces()
@@ -457,7 +457,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifications = service.DetectFaces(new byte[4], "name", "image/jpeg");
 
             Assert.IsNotNull(classifications);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
 
             Assert.IsTrue(classifications.Images.Count > 0);
             Assert.IsTrue(classifications.Images[0].Faces[0].Identity.Name == "Sneaky Snake");
@@ -475,7 +475,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             Faces response = new Faces()
@@ -527,7 +527,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifications = service.DetectFaces(null, null, null, new string[] { "http://faceurl1.com", "http://faceur2.com", "http://faceurl3.com" });
 
             Assert.IsNotNull(classifications);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
 
             Assert.IsTrue(classifications.Images.Count > 0);
             Assert.IsTrue(classifications.Images[0].Faces[0].Identity.Name == "Sneaky Snake");
@@ -561,7 +561,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
                 }
             };
 
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -582,7 +582,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifiers = service.GetClassifiersBrief();
 
             Assert.IsNotNull(classifiers);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(classifiers.Classifiers.Count > 0);
             Assert.IsTrue(classifiers.Classifiers[0].Name == "turtle-classifier");
             Assert.IsTrue(classifiers.Classifiers[0].ClassifierId == "turtle-classifier-id");
@@ -618,7 +618,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
                 }
             };
 
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -640,7 +640,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifiers = service.GetClassifiersVerbose();
 
             Assert.IsNotNull(classifiers);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
 
             Assert.IsTrue(classifiers.Classifiers.Count > 0);
             Assert.IsTrue(classifiers.Classifiers[0].Name == "turtle-classifier");
@@ -704,7 +704,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             GetClassifiersPerClassifierVerbose response = new GetClassifiersPerClassifierVerbose()
@@ -738,7 +738,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifier = service.CreateClassifier("classifierName", positiveExamples, negativeExamples);
 
             Assert.IsNotNull(classifier);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(classifier.Name == "turtle-classifier");
             Assert.IsTrue(classifier.ClassifierId == "turtle-classifier-id");
             Assert.IsTrue(classifier.Status == "ready");
@@ -750,7 +750,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             GetClassifiersPerClassifierVerbose response = new GetClassifiersPerClassifierVerbose()
@@ -783,7 +783,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifier = service.CreateClassifier("classifierName", positiveExamples);
 
             Assert.IsNotNull(classifier);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(classifier.Name == "turtle-classifier");
             Assert.IsTrue(classifier.ClassifierId == "turtle-classifier-id");
             Assert.IsTrue(classifier.Status == "ready");
@@ -807,7 +807,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             object response = new object() { };
@@ -828,7 +828,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifier = service.DeleteClassifier("classifierName");
 
             Assert.IsNotNull(classifier);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -848,7 +848,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             GetClassifiersPerClassifierVerbose response = new GetClassifiersPerClassifierVerbose()
@@ -875,7 +875,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifier = service.GetClassifier("classifierName");
 
             Assert.IsNotNull(classifier);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(classifier.Name == "turtle-classifier");
             Assert.IsTrue(classifier.ClassifierId == "turtle-classifier-id");
             Assert.IsTrue(classifier.Status == "ready");
@@ -916,7 +916,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             GetClassifiersPerClassifierVerbose response = new GetClassifiersPerClassifierVerbose()
@@ -948,7 +948,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifier = service.UpdateClassifier("classifierName", positiveExamples);
 
             Assert.IsNotNull(classifier);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(classifier.Name == "turtle-classifier");
             Assert.IsTrue(classifier.ClassifierId == "turtle-classifier-id");
             Assert.IsTrue(classifier.Status == "ready");
@@ -960,7 +960,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             GetClassifiersPerClassifierVerbose response = new GetClassifiersPerClassifierVerbose()
@@ -991,7 +991,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifier = service.UpdateClassifier("classifierName", null, negativeExamples);
 
             Assert.IsNotNull(classifier);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(classifier.Name == "turtle-classifier");
             Assert.IsTrue(classifier.ClassifierId == "turtle-classifier-id");
             Assert.IsTrue(classifier.Status == "ready");
@@ -1003,7 +1003,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             GetClassifiersPerClassifierVerbose response = new GetClassifiersPerClassifierVerbose()
@@ -1037,7 +1037,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var classifier = service.UpdateClassifier("classifierName", positiveExamples, negativeExamples);
 
             Assert.IsNotNull(classifier);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(classifier.Name == "turtle-classifier");
             Assert.IsTrue(classifier.ClassifierId == "turtle-classifier-id");
             Assert.IsTrue(classifier.Status == "ready");
@@ -1051,7 +1051,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             GetCollections response = new GetCollections()
@@ -1084,7 +1084,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var result = service.GetCollections();
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Collections[0].CollectionId == "collectionId");
             Assert.IsTrue(result.Collections[0].Name == "collectionName");
             Assert.IsTrue(result.Collections[0].Created == "createdDate");
@@ -1110,7 +1110,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             CreateCollection response = new CreateCollection()
@@ -1139,7 +1139,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.CreateCollection("collectionName");
 
             Assert.IsNotNull(collection);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(collection.Name == "collectionName");
             Assert.IsTrue(collection.CollectionId == "collectionId");
             Assert.IsTrue(collection.Status == "collectionStatus");
@@ -1165,7 +1165,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             object response = new object();
@@ -1184,7 +1184,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.DeleteCollection("collectionName");
 
             Assert.IsNotNull(collection);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -1204,7 +1204,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             CreateCollection response = new CreateCollection()
@@ -1231,7 +1231,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.GetCollection("collectionName");
 
             Assert.IsNotNull(collection);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(collection.CollectionId == "collectionId");
             Assert.IsTrue(collection.Name == "collectionName");
             Assert.IsTrue(collection.Created == "createdDate");
@@ -1259,7 +1259,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             GetCollectionImages response = new GetCollectionImages()
@@ -1289,7 +1289,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.GetCollectionImages("collectionName");
 
             Assert.IsNotNull(collection);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(collection.Images[0].ImageId == "imageId");
             Assert.IsTrue(collection.Images[0].Created == "created");
             Assert.IsTrue(collection.Images[0].ImageFile == "imageFile");
@@ -1324,7 +1324,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             CollectionsConfig response = new CollectionsConfig()
@@ -1357,7 +1357,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.AddImage("collectionName", new byte[4], "imageFilename.jpg");
 
             Assert.IsNotNull(collection);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(collection.Images[0].ImageId == "imageId");
             Assert.IsTrue(collection.Images[0].Created == "created");
             Assert.IsTrue(collection.Images[0].ImageFile == "imageFile");
@@ -1368,7 +1368,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             CollectionsConfig response = new CollectionsConfig()
@@ -1401,7 +1401,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.AddImage("collectionName", new byte[4], "imageFilename.jpg", new byte[4]);
 
             Assert.IsNotNull(collection);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(collection.Images[0].ImageId == "imageId");
             Assert.IsTrue(collection.Images[0].Created == "created");
             Assert.IsTrue(collection.Images[0].ImageFile == "imageFile");
@@ -1448,7 +1448,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             object response = new object();
@@ -1467,7 +1467,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.DeleteImage("collectionId", "ImageId");
 
             Assert.IsNotNull(collection);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -1511,7 +1511,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             GetCollectionsBrief response = new GetCollectionsBrief()
@@ -1536,7 +1536,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var image = service.GetImage("collectionId", "imageId");
 
             Assert.IsNotNull(image);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(image.ImageId == "imageId");
             Assert.IsTrue(image.Created == "created");
             Assert.IsTrue(image.ImageFile == "imageFile");
@@ -1585,7 +1585,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             object response = new object();
@@ -1604,7 +1604,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var collection = service.DeleteImageMetadata("collectionId", "ImageId");
 
             Assert.IsNotNull(collection);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -1661,7 +1661,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Dictionary<string, string> response = new Dictionary<string, string>();
@@ -1681,7 +1681,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var metadata = service.GetMetadata("collectionId", "imageId");
 
             Assert.IsNotNull(metadata);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(metadata["metadata"] == "test");
         }
 
@@ -1714,7 +1714,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                   .Returns(request);
 
             Dictionary<string, string> response = new Dictionary<string, string>();
@@ -1736,7 +1736,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var metadata = service.AddImageMetadata("collecionId", "imageId", new byte[4]);
 
             Assert.IsNotNull(metadata);
-            client.Received().PutAsync(Arg.Any<string>());
+            client.Received().Put(Arg.Any<string>());
             Assert.IsTrue(metadata["metadata"] == "test");
         }
         #endregion
@@ -1786,7 +1786,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
         {
             IClient client = this.CreateClient();
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             SimilarImagesConfig response = new SimilarImagesConfig()
@@ -1820,7 +1820,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.UnitTests
             var similarImages = service.FindSimilar("collectionName", new byte[4], "imageFilename.jpg");
 
             Assert.IsNotNull(similarImages);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(similarImages.SimilarImages[0].ImageId == "imageId");
             Assert.IsTrue(similarImages.SimilarImages[0].Created == "created");
             Assert.IsTrue(similarImages.SimilarImages[0].ImageFile == "imageFile");

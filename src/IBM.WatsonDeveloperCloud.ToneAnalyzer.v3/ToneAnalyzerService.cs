@@ -77,7 +77,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v3/tone")
+                                .Post($"{this.Endpoint}/v3/tone")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("tones", tones)
                                 .WithArgument("sentences", sentences)
@@ -106,7 +106,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v3/tone_chat")
+                                .Post($"{this.Endpoint}/v3/tone_chat")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<ToneChatInput>(utterances)
                                 .As<UtteranceAnalyses>()

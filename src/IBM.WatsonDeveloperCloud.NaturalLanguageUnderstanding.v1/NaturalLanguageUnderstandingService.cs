@@ -76,7 +76,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/analyze")
+                                .Post($"{this.Endpoint}/v1/analyze")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<Parameters>(parameters)
                                 .As<AnalysisResults>()
@@ -102,7 +102,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/models/{modelId}")
+                                .Delete($"{this.Endpoint}/v1/models/{modelId}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -126,7 +126,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/models")
+                                .Get($"{this.Endpoint}/v1/models")
                                 .WithArgument("version", VersionDate)
                                 .As<ListModelsResults>()
                                 .Result;

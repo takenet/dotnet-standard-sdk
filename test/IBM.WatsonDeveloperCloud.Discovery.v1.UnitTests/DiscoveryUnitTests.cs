@@ -118,7 +118,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -137,7 +137,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -174,7 +174,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.ListEnvironments();
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Environments != null);
             Assert.IsTrue(result.Environments.Count > 0);
             Assert.IsTrue(result.Environments[0].Status == ModelEnvironment.StatusEnum.PENDING);
@@ -214,7 +214,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -240,7 +240,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -280,7 +280,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.CreateEnvironment(environment);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Size == 1);
@@ -309,7 +309,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -329,7 +329,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -351,7 +351,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.DeleteEnvironment("environmentId");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
             Assert.IsTrue(result.EnvironmentId == "environmentId");
             Assert.IsTrue(result.Status == DeleteEnvironmentResponse.StatusEnum.DELETED);
         }
@@ -379,7 +379,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -398,7 +398,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -427,7 +427,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.GetEnvironment("environmentId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Status == ModelEnvironment.StatusEnum.PENDING);
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
@@ -477,7 +477,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -502,7 +502,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -539,7 +539,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.UpdateEnvironment("environmentId", environment);
 
             Assert.IsNotNull(result);
-            client.Received().PutAsync(Arg.Any<string>());
+            client.Received().Put(Arg.Any<string>());
             Assert.IsTrue(result.Status == ModelEnvironment.StatusEnum.PENDING);
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
@@ -571,7 +571,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -591,7 +591,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -632,7 +632,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.TestConfigurationInEnvironment("environmentId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Snapshots);
             Assert.IsTrue(result.Snapshots.Count > 0);
             Assert.IsTrue(result.Snapshots[0].Step == DocumentSnapshot.StepEnum.HTML_INPUT);
@@ -656,7 +656,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -697,7 +697,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.TestConfigurationInEnvironment("environmentId", configuration:"configuration");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Snapshots);
             Assert.IsTrue(result.Snapshots.Count > 0);
             Assert.IsTrue(result.Snapshots[0].Step == DocumentSnapshot.StepEnum.HTML_INPUT);
@@ -717,7 +717,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -756,7 +756,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             service.VersionDate = "versionDate";
             var result = service.TestConfigurationInEnvironment("environmentId", file: Substitute.For<FileStream>("any_file", FileMode.Create));
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Snapshots);
             Assert.IsTrue(result.Snapshots.Count > 0);
             Assert.IsTrue(result.Snapshots[0].Step == DocumentSnapshot.StepEnum.HTML_INPUT);
@@ -776,7 +776,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -816,7 +816,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 
             var result = service.TestConfigurationInEnvironment("environmentId", metadata:"metadata");
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(result.Snapshots);
             Assert.IsTrue(result.Snapshots.Count > 0);
             Assert.IsTrue(result.Snapshots[0].Step == DocumentSnapshot.StepEnum.HTML_INPUT);
@@ -854,7 +854,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -873,7 +873,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1024,7 +1024,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.ListConfigurations("environmentId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Configurations);
             Assert.IsTrue(result.Configurations.Count > 0);
             Assert.IsTrue(result.Configurations[0].Name == "name");
@@ -1080,7 +1080,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1100,7 +1100,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             Configuration Configuration = new Configuration()
@@ -1174,7 +1174,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.CreateConfiguration("environmentId",Configuration);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
         }
@@ -1209,7 +1209,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1229,7 +1229,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1258,7 +1258,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.DeleteConfiguration("environmentId", "ConfigurationId");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
             Assert.IsTrue(result.ConfigurationId == "ConfigurationId");
             Assert.IsTrue(result.Status == DeleteConfigurationResponse.StatusEnum.DELETED);
             Assert.IsNotNull(result.Notices);
@@ -1301,7 +1301,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1320,7 +1320,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1394,7 +1394,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.GetConfiguration("environmentId", "ConfigurationId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
         }
@@ -1437,7 +1437,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1457,7 +1457,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                 .Returns(request);
 
             #region response
@@ -1533,7 +1533,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.UpdateConfiguration("environmentId", "ConfigurationId", new Configuration());
 
             Assert.IsNotNull(result);
-            client.Received().PutAsync(Arg.Any<string>());
+            client.Received().Put(Arg.Any<string>());
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
         }
@@ -1563,7 +1563,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1582,7 +1582,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1616,7 +1616,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.ListCollections("environmentId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Collections);
             Assert.IsTrue(result.Collections.Count > 0);
             Assert.IsTrue(result.Collections[0].Name == "name");
@@ -1656,7 +1656,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1676,7 +1676,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             Collection Collection = new Collection()
@@ -1702,7 +1702,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.CreateCollection("environmentId", new CreateCollectionRequest());
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Status == Collection.StatusEnum.PENDING);
@@ -1740,7 +1740,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1760,7 +1760,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1782,7 +1782,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.DeleteCollection("environmentId", "collectionId");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
             Assert.IsTrue(result.CollectionId == "collectionId");
             Assert.IsTrue(result.Status == DeleteCollectionResponse.StatusEnum.DELETED);
         }
@@ -1817,7 +1817,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1836,7 +1836,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -1862,7 +1862,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.GetCollection("environmentId", "collectionId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.ConfigurationId == "configurationId");
@@ -1900,7 +1900,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1920,7 +1920,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                 .Returns(request);
 
             #region response
@@ -1955,7 +1955,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.UpdateCollection("environmentId", "collectionId", updateCollectionRequest);
 
             Assert.IsNotNull(result);
-            client.Received().PutAsync(Arg.Any<string>());
+            client.Received().Put(Arg.Any<string>());
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.ConfigurationId == "configurationId");
@@ -1998,7 +1998,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2017,7 +2017,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2044,7 +2044,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.ListCollectionFields("environmentId", "collectionId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Fields);
             Assert.IsTrue(result.Fields.Count > 0);
             Assert.IsTrue(result.Fields[0].FieldType == Field.TypeEnum.STRING);
@@ -2084,7 +2084,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2104,7 +2104,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             DocumentAccepted documentAccepted = new DocumentAccepted()
@@ -2135,7 +2135,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.AddDocument("environmentId", "collectionId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Status == DocumentAccepted.StatusEnum.PROCESSING);
             Assert.IsTrue(result.DocumentId == "documentId");
             Assert.IsNotNull(result.Notices);
@@ -2154,7 +2154,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             DocumentAccepted documentAccepted = new DocumentAccepted()
@@ -2185,7 +2185,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.AddDocument("environmentId", "collectionId", configuration:"configuration");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Status == DocumentAccepted.StatusEnum.PROCESSING);
             Assert.IsTrue(result.DocumentId == "documentId");
             Assert.IsNotNull(result.Notices);
@@ -2235,7 +2235,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2255,7 +2255,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2277,7 +2277,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.DeleteDocument("environmentId", "collectionId", "doucmentId");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
             Assert.IsTrue(result.DocumentId == "doucmentId");
             Assert.IsTrue(result.Status == DeleteDocumentResponse.StatusEnum.DELETED);
         }
@@ -2319,7 +2319,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2338,7 +2338,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2366,7 +2366,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.GetDocumentStatus("environmentId", "collectionId", "documentId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Status == DocumentStatus.StatusEnum.AVAILABLE);
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
@@ -2421,7 +2421,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2441,7 +2441,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             DocumentAccepted documentAccepted = new DocumentAccepted()
@@ -2470,7 +2470,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.UpdateDocument("environmentId", "collectionId", "documentId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Status == DocumentAccepted.StatusEnum.PROCESSING);
             Assert.IsTrue(result.DocumentId == "documentId");
             Assert.IsNotNull(result.Notices);
@@ -2489,7 +2489,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             DocumentAccepted documentAccepted = new DocumentAccepted()
@@ -2518,7 +2518,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.UpdateDocument("environmentId", "collectionId", "documentId", configuration:"configuration");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Status == DocumentAccepted.StatusEnum.PROCESSING);
             Assert.IsTrue(result.DocumentId == "documentId");
             Assert.IsNotNull(result.Notices);
@@ -2562,7 +2562,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2581,7 +2581,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2665,7 +2665,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.Query("environmentId", "collectionId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
         #endregion
 
@@ -2698,7 +2698,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2717,7 +2717,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -2802,7 +2802,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             var result = service.QueryNotices("environmentId", "collectionId");
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result.Results);
             Assert.IsTrue(result.Results.Count > 0);
             Assert.IsNull(result.Results[0].NoticeId);

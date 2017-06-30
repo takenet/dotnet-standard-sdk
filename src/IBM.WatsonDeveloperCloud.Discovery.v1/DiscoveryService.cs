@@ -86,7 +86,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections")
+                                .Post($"{this.Endpoint}/v1/environments/{environmentId}/collections")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateCollectionRequest>(body)
                                 .As<Collection>()
@@ -115,7 +115,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}")
+                                .Delete($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}")
                                 .WithArgument("version", VersionDate)
                                 .As<DeleteCollectionResponse>()
                                 .Result;
@@ -143,7 +143,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}")
                                 .WithArgument("version", VersionDate)
                                 .As<Collection>()
                                 .Result;
@@ -171,7 +171,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/fields")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/fields")
                                 .WithArgument("version", VersionDate)
                                 .As<ListCollectionFieldsResponse>()
                                 .Result;
@@ -197,7 +197,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/collections")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("name", name)
                                 .As<ListCollectionsResponse>()
@@ -226,7 +226,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PutAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}")
+                                .Put($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateCollectionRequest>(body)
                                 .As<Collection>()
@@ -254,7 +254,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/configurations")
+                                .Post($"{this.Endpoint}/v1/environments/{environmentId}/configurations")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<Configuration>(configuration)
                                 .As<Configuration>()
@@ -283,7 +283,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/environments/{environmentId}/configurations/{configurationId}")
+                                .Delete($"{this.Endpoint}/v1/environments/{environmentId}/configurations/{configurationId}")
                                 .WithArgument("version", VersionDate)
                                 .As<DeleteConfigurationResponse>()
                                 .Result;
@@ -311,7 +311,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/configurations/{configurationId}")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/configurations/{configurationId}")
                                 .WithArgument("version", VersionDate)
                                 .As<Configuration>()
                                 .Result;
@@ -337,7 +337,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/configurations")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/configurations")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("name", name)
                                 .As<ListConfigurationsResponse>()
@@ -368,7 +368,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PutAsync($"{this.Endpoint}/v1/environments/{environmentId}/configurations/{configurationId}")
+                                .Put($"{this.Endpoint}/v1/environments/{environmentId}/configurations/{configurationId}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<Configuration>(configuration)
                                 .As<Configuration>()
@@ -416,7 +416,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents")
+                                .Post($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("configuration_id", configurationId)
                                 .WithBodyContent(formData)
@@ -448,7 +448,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
+                                .Delete($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
                                 .WithArgument("version", VersionDate)
                                 .As<DeleteDocumentResponse>()
                                 .Result;
@@ -478,7 +478,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
                                 .WithArgument("version", VersionDate)
                                 .As<DocumentStatus>()
                                 .Result;
@@ -528,7 +528,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
+                                .Post($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("configuration_id", configurationId)
                                 .WithBodyContent(formData)
@@ -555,7 +555,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/environments")
+                                .Post($"{this.Endpoint}/v1/environments")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateEnvironmentRequest>(body)
                                 .As<ModelEnvironment>()
@@ -582,7 +582,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/environments/{environmentId}")
+                                .Delete($"{this.Endpoint}/v1/environments/{environmentId}")
                                 .WithArgument("version", VersionDate)
                                 .As<DeleteEnvironmentResponse>()
                                 .Result;
@@ -608,7 +608,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}")
                                 .WithArgument("version", VersionDate)
                                 .As<ModelEnvironment>()
                                 .Result;
@@ -632,7 +632,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments")
+                                .Get($"{this.Endpoint}/v1/environments")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("name", name)
                                 .As<ListEnvironmentsResponse>()
@@ -661,7 +661,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PutAsync($"{this.Endpoint}/v1/environments/{environmentId}")
+                                .Put($"{this.Endpoint}/v1/environments/{environmentId}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateEnvironmentRequest>(body)
                                 .As<ModelEnvironment>()
@@ -689,7 +689,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/query")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/query")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("filter", filter)
                                 .WithArgument("query", query)
@@ -727,7 +727,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/notices")
+                                .Get($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/notices")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("filter", filter)
                                 .WithArgument("query", query)
@@ -782,7 +782,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/preview")
+                                .Post($"{this.Endpoint}/v1/environments/{environmentId}/preview")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("step", step)
                                 .WithArgument("configuration_id", configurationId)

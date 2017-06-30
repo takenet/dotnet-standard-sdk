@@ -77,7 +77,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_LIST_MODELS}")
+                               .Get($"{this.Endpoint}{PATH_LIST_MODELS}")
                                .WithArgument("source", source)
                                .WithArgument("target", target)
                                .WithArgument("default", isDefault.ToString())
@@ -141,7 +141,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2
 
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}{PATH_MODEL}")
+                                .Post($"{this.Endpoint}{PATH_MODEL}")
                                 .WithArgument("base_model_id", _options.BaseModelId)
                                 .WithArgument("name", _options.Name)
                                 .WithBodyContent(formData)
@@ -167,7 +167,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .DeleteAsync($"{this.Endpoint}{PATH_MODEL}{modelId}")
+                               .Delete($"{this.Endpoint}{PATH_MODEL}{modelId}")
                                .As<DeleteModels>()
                                .Result;
             }
@@ -190,7 +190,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_MODEL}/{modelId}")
+                               .Get($"{this.Endpoint}{PATH_MODEL}/{modelId}")
                                .As<ModelPayload>()
                                .Result;
             }
@@ -244,7 +244,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2
 
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                          .PostAsync(this.Endpoint + PATH_TRANSLATE)
+                          .Post(this.Endpoint + PATH_TRANSLATE)
                           .WithBody<JObject>(json, MediaTypeHeaderValue.Parse(HttpMediaType.APPLICATION_JSON))
                           .As<TranslateResponse>()
                           .Result;
@@ -265,7 +265,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_IDENTIFIABLE_LANGUAGES}")
+                               .Get($"{this.Endpoint}{PATH_IDENTIFIABLE_LANGUAGES}")
                                .As<IdentifiableLanguages>()
                                .Result;
             }
@@ -285,7 +285,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .PostAsync($"{this.Endpoint}{PATH_IDENTIFY}")
+                               .Post($"{this.Endpoint}{PATH_IDENTIFY}")
                                .WithHeader("accept", HttpMediaType.APPLICATION_JSON)
                                .WithBodyContent(new StringContent(_text, Encoding.UTF8, HttpMediaType.TEXT_PLAIN))
                                .As<IdentifiedLanguages>()

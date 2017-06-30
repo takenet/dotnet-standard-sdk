@@ -82,7 +82,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             TranslationModels response = new TranslationModels()
@@ -117,7 +117,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var translationModels = service.ListModels(false, "ar", "en");
 
             Assert.IsNotNull(translationModels);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(translationModels.Models.Count > 0);
         }
 
@@ -127,7 +127,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -145,7 +145,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -170,7 +170,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
                                                       .SetForcedGlossary(Substitute.For<FileStream>("any_file", FileMode.Create)));
 
             Assert.IsNotNull(customModel);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsFalse(string.IsNullOrEmpty(customModel.ModelId));
         }
 
@@ -180,7 +180,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -205,7 +205,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -230,7 +230,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -255,7 +255,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -280,7 +280,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             request.As<DeleteModels>()
@@ -295,7 +295,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var deletedModel = service.DeleteModel("model_id");
 
             Assert.IsNotNull(deletedModel);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
             Assert.IsTrue(deletedModel.Deleted.Equals("success"));
         }
 
@@ -305,7 +305,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             LanguageTranslatorService service =
@@ -320,7 +320,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(x => { throw new AggregateException(new Exception()); });
 
             LanguageTranslatorService service =
@@ -335,7 +335,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.As<ModelPayload>()
@@ -350,7 +350,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var modelDetails = service.GetModelDetails("model_id");
 
             Assert.IsNotNull(modelDetails);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsFalse(string.IsNullOrEmpty(modelDetails.ModelId));
         }
 
@@ -360,7 +360,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.As<ModelPayload>()
@@ -381,7 +381,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x => { throw new AggregateException(new Exception()); });
 
             LanguageTranslatorService service =
@@ -396,7 +396,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<JObject>(Arg.Any<JObject>(), Arg.Any<MediaTypeHeaderValue>())
@@ -424,7 +424,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var translation = service.Translate("model_id", "text in any language");
 
             Assert.IsNotNull(translation);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(translation.Translations.Count == 1);
         }
 
@@ -434,7 +434,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<JObject>(Arg.Any<JObject>(), Arg.Any<MediaTypeHeaderValue>())
@@ -460,7 +460,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var translation = service.Translate("source", "target", "text in any language");
 
             Assert.IsNotNull(translation);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(translation.Translations.Count == 1);
         }
 
@@ -470,7 +470,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<JObject>(Arg.Any<JObject>(), Arg.Any<MediaTypeHeaderValue>())
@@ -496,7 +496,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var translation = service.Translate("model_id", new List<string>() { "text in any language" });
 
             Assert.IsNotNull(translation);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(translation.Translations.Count == 1);
         }
 
@@ -506,7 +506,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<JObject>(Arg.Any<JObject>(), Arg.Any<MediaTypeHeaderValue>())
@@ -532,7 +532,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var translation = service.Translate("source", "target", new List<string>() { "text in any language" });
 
             Assert.IsNotNull(translation);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(translation.Translations.Count == 1);
         }
 
@@ -542,7 +542,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<JObject>(Arg.Any<JObject>(), Arg.Any<MediaTypeHeaderValue>())
@@ -560,7 +560,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             IdentifiableLanguages response = new IdentifiableLanguages()
@@ -584,7 +584,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             var identifiableLanguages = service.GetIdentifiableLanguages();
 
             Assert.IsNotNull(identifiableLanguages);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(identifiableLanguages.Languages.Count == 1);
             Assert.IsTrue(identifiableLanguages.Languages.First().Name.Equals("name"));
         }
@@ -595,7 +595,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x => { throw new AggregateException(new Exception()); });
 
             LanguageTranslatorService service =
@@ -610,7 +610,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), HttpMediaType.APPLICATION_JSON)
@@ -640,7 +640,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IdentifiedLanguages identifiedLanguages = service.Identify("any text");
 
             Assert.IsNotNull(identifiedLanguages);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(identifiedLanguages.Languages.Count == 1);
             Assert.IsTrue(identifiedLanguages.Languages.First().Confidence == 1);
         }
@@ -651,7 +651,7 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), HttpMediaType.APPLICATION_JSON)

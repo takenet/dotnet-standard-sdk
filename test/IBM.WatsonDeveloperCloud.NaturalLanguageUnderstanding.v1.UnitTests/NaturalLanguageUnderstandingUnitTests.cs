@@ -116,7 +116,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -136,7 +136,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -388,7 +388,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             var result = service.Analyze(parameters);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Language== "en");
             Assert.IsTrue(result.AnalyzedText == "testText");
         }
@@ -417,7 +417,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -437,7 +437,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -455,7 +455,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             var result = service.DeleteModel("modelId");
 
             Assert.IsNotNull(result);
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
         #endregion
 
@@ -475,7 +475,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -495,7 +495,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                 .Returns(request);
 
             #region Response
@@ -525,7 +525,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             var result = service.GetModels();
 
             Assert.IsNotNull(result);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(result.Models[0].Status == "status");
             Assert.IsTrue(result.Models[0].ModelId == "modelId");
             Assert.IsTrue(result.Models[0].Language == "language");

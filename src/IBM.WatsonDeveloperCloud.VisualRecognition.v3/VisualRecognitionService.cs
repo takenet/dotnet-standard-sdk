@@ -91,7 +91,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{PATH_CLASSIFY}")
+                result = this.Client.Get($"{this.Endpoint}{PATH_CLASSIFY}")
                     .WithHeader("Accept-Language", "en")
                     .WithArgument("url", url)
                     .WithArgument("classifier_ids", _classifierIDs)
@@ -154,7 +154,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                     formData.Add(parametersContent);
                 }
 
-                result = this.Client.PostAsync($"{ this.Endpoint}{PATH_CLASSIFY}")
+                result = this.Client.Post($"{ this.Endpoint}{PATH_CLASSIFY}")
                     .WithHeader("Accept-Language", "en")
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
@@ -181,7 +181,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{PATH_DETECT_FACES}")
+                result = this.Client.Get($"{this.Endpoint}{PATH_DETECT_FACES}")
                     .WithArgument("url", url)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
@@ -238,7 +238,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                     formData.Add(parametersContent);
                 }
 
-                result = this.Client.PostAsync($"{ this.Endpoint}{PATH_DETECT_FACES}")
+                result = this.Client.Post($"{ this.Endpoint}{PATH_DETECT_FACES}")
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
                     .WithBodyContent(formData)
@@ -261,7 +261,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{PATH_CLASSIFIERS}")
+                result = this.Client.Get($"{this.Endpoint}{PATH_CLASSIFIERS}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("verbose", false)
@@ -283,7 +283,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{PATH_CLASSIFIERS}")
+                result = this.Client.Get($"{this.Endpoint}{PATH_CLASSIFIERS}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("verbose", true)
@@ -334,7 +334,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                 nameDataContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                 formData.Add(nameDataContent, "name");
 
-                result = this.Client.PostAsync($"{ this.Endpoint}{PATH_CLASSIFIERS}")
+                result = this.Client.Post($"{ this.Endpoint}{PATH_CLASSIFIERS}")
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
                     .WithBodyContent(formData)
@@ -359,7 +359,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.DeleteAsync($"{this.Endpoint}{PATH_CLASSIFIERS}/{classifierId}")
+                result = this.Client.Delete($"{this.Endpoint}{PATH_CLASSIFIERS}/{classifierId}")
                                .WithArgument("api_key", ApiKey)
                                .WithArgument("version", VERSION_DATE_2016_05_20)
                                .WithHeader("accept", HttpMediaType.TEXT_HTML)
@@ -384,7 +384,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{string.Format(PATH_CLASSIFIER, classifierId)}")
+                result = this.Client.Get($"{this.Endpoint}{string.Format(PATH_CLASSIFIER, classifierId)}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithFormatter(new MediaTypeHeaderValue("application/octet-stream"))
@@ -430,7 +430,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                     formData.Add(negativeExamplesDataContent, "negative_examples", "negative_examples.zip");
                 }
 
-                result = this.Client.PostAsync($"{ this.Endpoint}{string.Format(PATH_CLASSIFIER, classifierId)}")
+                result = this.Client.Post($"{ this.Endpoint}{string.Format(PATH_CLASSIFIER, classifierId)}")
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
                     .WithBodyContent(formData)
@@ -454,7 +454,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{PATH_COLLECTIONS}")
+                result = this.Client.Get($"{this.Endpoint}{PATH_COLLECTIONS}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .As<GetCollections>()
@@ -487,7 +487,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                     formData.Add(nameContent, "name");
                 }
 
-                result = this.Client.PostAsync($"{this.Endpoint}{PATH_COLLECTIONS}")
+                result = this.Client.Post($"{this.Endpoint}{PATH_COLLECTIONS}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithBodyContent(formData)
@@ -511,7 +511,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.DeleteAsync($"{this.Endpoint}{PATH_COLLECTIONS}/{collectionId}")
+                result = this.Client.Delete($"{this.Endpoint}{PATH_COLLECTIONS}/{collectionId}")
                                .WithArgument("api_key", ApiKey)
                                .WithArgument("version", VERSION_DATE_2016_05_20)
                                .As<object>()
@@ -534,7 +534,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{string.Format(PATH_COLLECTION, collectionId)}")
+                result = this.Client.Get($"{this.Endpoint}{string.Format(PATH_COLLECTION, collectionId)}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .As<CreateCollection>()
@@ -559,7 +559,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{string.Format(PATH_COLLECTION_IMAGES, collectionId)}")
+                result = this.Client.Get($"{this.Endpoint}{string.Format(PATH_COLLECTION_IMAGES, collectionId)}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .As<GetCollectionImages>()
@@ -601,7 +601,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                     formData.Add(imageMetadataContent, "metadata", "metadata.json");
                 }
 
-                result = this.Client.PostAsync($"{ this.Endpoint}{string.Format(PATH_COLLECTION_IMAGES, collectionId)}")
+                result = this.Client.Post($"{ this.Endpoint}{string.Format(PATH_COLLECTION_IMAGES, collectionId)}")
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
                     .WithBodyContent(formData)
@@ -628,7 +628,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.DeleteAsync($"{this.Endpoint}/v3/collections/{collectionId}/images/{imageId}")
+                result = this.Client.Delete($"{this.Endpoint}/v3/collections/{collectionId}/images/{imageId}")
                                .WithArgument("api_key", ApiKey)
                                .WithArgument("version", VERSION_DATE_2016_05_20)
                                .As<object>()
@@ -654,7 +654,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{string.Format(PATH_COLLECTION_IMAGE, collectionId, imageId)}")
+                result = this.Client.Get($"{this.Endpoint}{string.Format(PATH_COLLECTION_IMAGE, collectionId, imageId)}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .As<GetCollectionsBrief>()
@@ -682,7 +682,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.DeleteAsync($"{this.Endpoint}/v3/collections/{collectionId}/images/{imageId}/metadata")
+                result = this.Client.Delete($"{this.Endpoint}/v3/collections/{collectionId}/images/{imageId}/metadata")
                                .WithArgument("api_key", ApiKey)
                                .WithArgument("version", VERSION_DATE_2016_05_20)
                                .As<object>()
@@ -708,7 +708,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
 
             try
             {
-                result = this.Client.GetAsync($"{this.Endpoint}{string.Format(PATH_COLLECTION_IMAGE_METADATA, collectionId, imageId)}")
+                result = this.Client.Get($"{this.Endpoint}{string.Format(PATH_COLLECTION_IMAGE_METADATA, collectionId, imageId)}")
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .As<Dictionary<string, string>>()
@@ -743,7 +743,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                 imageMetadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                 formData.Add(imageMetadataContent, "metadata", "metadata.json");
 
-                result = this.Client.PutAsync($"{ this.Endpoint}{string.Format(PATH_COLLECTION_IMAGE_METADATA, collectionId, imageId)}")
+                result = this.Client.Put($"{ this.Endpoint}{string.Format(PATH_COLLECTION_IMAGE_METADATA, collectionId, imageId)}")
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
                     .WithBodyContent(formData)
@@ -779,7 +779,7 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3
                 imageDataContent.Headers.ContentType = MediaTypeHeaderValue.Parse(imageMimeType);
                 formData.Add(imageDataContent, "image_file", imageFileName);
 
-                result = this.Client.PostAsync($"{ this.Endpoint}{string.Format(PATH_FIND_SIMILAR, collectionId)}")
+                result = this.Client.Post($"{ this.Endpoint}{string.Format(PATH_FIND_SIMILAR, collectionId)}")
                     .WithArgument("version", VERSION_DATE_2016_05_20)
                     .WithArgument("api_key", ApiKey)
                     .WithArgument("limit", limit.ToString())

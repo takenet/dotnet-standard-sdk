@@ -184,7 +184,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -218,7 +218,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.UnitTests
             IClient client = this.CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             #region Response
@@ -375,7 +375,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.UnitTests
                 service.Profile("contentType", "application/json", contentListContainer);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.Behavior.Count > 0);
             Assert.IsTrue(result.ConsumptionPreferences.Count > 0);
             Assert.IsTrue(result.Needs.Count > 0);

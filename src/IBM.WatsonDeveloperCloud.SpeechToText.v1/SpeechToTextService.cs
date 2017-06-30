@@ -73,7 +73,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                            .GetAsync($"{this.Endpoint}{PATH_MODELS}")
+                            .Get($"{this.Endpoint}{PATH_MODELS}")
                             .As<SpeechModelSet>()
                             .Result;
             }
@@ -96,7 +96,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                        .GetAsync($"{this.Endpoint}{PATH_MODELS}/{modelName}")
+                        .Get($"{this.Endpoint}{PATH_MODELS}/{modelName}")
                         .As<SpeechModel>()
                         .Result;
             }
@@ -119,7 +119,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
 
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .PostAsync($"{this.Endpoint}{PATH_CREATE_SESSION}")
+                               .Post($"{this.Endpoint}{PATH_CREATE_SESSION}")
                                .WithArgument("model", modelName)
                                .WithHeader("accept", HttpMediaType.APPLICATION_JSON)
                                .As<Session>()
@@ -149,7 +149,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{string.Format(PATH_SESSION_RECOGNIZE, sessionId)}")
+                               .Get($"{this.Endpoint}{string.Format(PATH_SESSION_RECOGNIZE, sessionId)}")
                                .WithHeader("Cookie", sessionId)
                                .WithHeader("accept", HttpMediaType.APPLICATION_JSON)
                                .As<RecognizeStatus>()
@@ -179,7 +179,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .DeleteAsync(string.Format("{0}{1}/{2}", this.Endpoint, PATH_DELETE_SESSION, sessionId))
+                               .Delete(string.Format("{0}{1}/{2}", this.Endpoint, PATH_DELETE_SESSION, sessionId))
                                .AsMessage()
                                .Result;
             }
@@ -301,13 +301,13 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
                 {
                     request =
                         this.Client.WithAuthentication(this.UserName, this.Password)
-                               .PostAsync($"{this.Endpoint}{PATH_RECOGNIZE}");
+                               .Post($"{this.Endpoint}{PATH_RECOGNIZE}");
                 }
                 else
                 {
                     request =
                         this.Client.WithAuthentication(this.UserName, this.Password)
-                                   .PostAsync($"{this.Endpoint}{string.Format(PATH_SESSION_RECOGNIZE, sessionId)}")
+                                   .Post($"{this.Endpoint}{string.Format(PATH_SESSION_RECOGNIZE, sessionId)}")
                                    .WithHeader("Cookie", sessionId);
                 }
 
@@ -407,7 +407,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 var request =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{string.Format(PATH_OBSERVE_RESULT, sessionId)}");
+                               .Get($"{this.Endpoint}{string.Format(PATH_OBSERVE_RESULT, sessionId)}");
 
                 if (sequenceId.HasValue)
                     request.WithArgument("sequence_id", sequenceId);
@@ -467,7 +467,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
 
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .PostAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}")
+                               .Post($"{this.Endpoint}{PATH_CUSTOM_MODEL}")
                                .WithBody<JObject>(json, MediaTypeHeaderValue.Parse(HttpMediaType.APPLICATION_JSON))
                                .As<CustomizationID>()
                                .Result;
@@ -491,7 +491,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}")
+                               .Get($"{this.Endpoint}{PATH_CUSTOM_MODEL}")
                                .WithArgument("language", language)
                                .As<Customizations>()
                                .Result;
@@ -515,7 +515,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                    this.Client.WithAuthentication(this.UserName, this.Password)
-                              .GetAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}")
+                              .Get($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}")
                               .As<Customization>()
                               .Result;
             }
@@ -537,7 +537,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                              .PostAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/train")
+                              .Post($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/train")
                               .WithArgument("word_type_to_add", wordTypeToAdd)
                               .AsString();
             }
@@ -559,7 +559,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                              .PostAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/reset")
+                              .Post($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/reset")
                               .AsString();
             }
             catch (AggregateException ae)
@@ -579,7 +579,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                              .PostAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/upgrade_model")
+                              .Post($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/upgrade_model")
                               .AsString();
             }
             catch (AggregateException ae)
@@ -600,7 +600,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                              .DeleteAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}")
+                              .Delete($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}")
                               .AsString();
             }
             catch (AggregateException ae)
@@ -640,7 +640,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
 
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                                  .PostAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora/{corpusName}")
+                                  .Post($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora/{corpusName}")
                                   .WithArgument("allow_overwrite ", allowOverwrite)
                                   .WithBodyContent(formData)
                                   .AsString()
@@ -665,7 +665,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora")
+                               .Get($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora")
                                .As<Corpora>()
                                .Result;
             }
@@ -691,7 +691,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora/{corpusName}")
+                               .Get($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora/{corpusName}")
                                .As<Corpus>()
                                .Result;
             }
@@ -717,7 +717,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .DeleteAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora/{name}")
+                               .Delete($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/corpora/{name}")
                                .AsString()
                                .Result;
             }
@@ -743,7 +743,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .PostAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words")
+                               .Post($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words")
                                .WithBody<Words>(body)
                                .AsString()
                                .Result;
@@ -773,7 +773,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .PutAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words/{wordname}")
+                               .Put($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words/{wordname}")
                                .WithBody<WordDefinition>(body)
                                .AsString()
                                .Result;
@@ -798,7 +798,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
 
                 var request =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words");
+                               .Get($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words");
 
                 if (wordType.HasValue)
                 {
@@ -850,7 +850,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             {
                 result =
                     this.Client.WithAuthentication(this.UserName, this.Password)
-                               .GetAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words/{wordname}")
+                               .Get($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words/{wordname}")
                                .As<WordData>()
                                .Result;
             }
@@ -874,7 +874,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.v1
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                           .DeleteAsync($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words/{wordname}");
+                           .Delete($"{this.Endpoint}{PATH_CUSTOM_MODEL}/{customizationId}/words/{wordname}");
             }
             catch (AggregateException ae)
             {

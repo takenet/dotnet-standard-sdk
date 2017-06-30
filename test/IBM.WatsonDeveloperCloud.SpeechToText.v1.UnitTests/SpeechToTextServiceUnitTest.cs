@@ -101,7 +101,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechModelSet>()
@@ -114,7 +114,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var models = service.GetModels();
 
             Assert.IsNotNull(models);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(models.Models.Count > 0);
         }
 
@@ -145,7 +145,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -186,7 +186,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechModel>()
@@ -199,7 +199,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var models = service.GetModel("model_name");
 
             Assert.IsNotNull(models);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(models.Name);
         }
 
@@ -224,7 +224,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -259,7 +259,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -278,7 +278,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var models = service.CreateSession("model_name");
 
             Assert.IsNotNull(models);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsFalse(string.IsNullOrEmpty(models.SessionId));
         }
 
@@ -298,7 +298,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -317,7 +317,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var models = service.CreateSession(string.Empty);
 
             Assert.IsNotNull(models);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsFalse(string.IsNullOrEmpty(models.SessionId));
         }
 
@@ -332,7 +332,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -370,7 +370,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -386,7 +386,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var sessionStatus = service.GetSessionStatus(new Session() { SessionId = "session_id" });
 
             Assert.IsNotNull(sessionStatus);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.AreEqual(sessionStatus.Session.State, "initialized");
         }
 
@@ -409,7 +409,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -444,7 +444,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -485,7 +485,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -500,7 +500,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.DeleteSession(new Session() { SessionId = "session_id" });
 
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -522,7 +522,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -557,7 +557,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                    .Returns(x =>
                    {
                        throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -653,7 +653,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechRecognitionEvent>()
@@ -682,7 +682,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                   speakerLabels: true);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -767,7 +767,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -797,7 +797,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                              speakerLabels: true);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -829,7 +829,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                              speakerLabels: true);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -861,7 +861,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                              speakerLabels: true);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -893,7 +893,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                              speakerLabels: true);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -914,7 +914,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechRecognitionEvent>()
@@ -949,7 +949,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                  customizationId: "customizationId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -970,7 +970,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -1009,7 +1009,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                             customizationId: "customizationId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -1050,7 +1050,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                             customizationId: "customizationId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -1091,7 +1091,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                             customizationId: "customizationId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -1132,7 +1132,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                             customizationId: "customizationId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -1157,7 +1157,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                             customizationId: "customizationId");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.ResultIndex == 1);
         }
 
@@ -1178,7 +1178,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechRecognitionEvent>()
@@ -1210,7 +1210,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechRecognitionEvent>()
@@ -1242,7 +1242,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechRecognitionEvent>()
@@ -1275,7 +1275,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechRecognitionEvent>()
@@ -1308,7 +1308,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.As<SpeechRecognitionEvent>()
@@ -1335,7 +1335,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1374,7 +1374,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1390,7 +1390,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var recognitionEvent = service.ObserveResult("session_id", 1, true);
 
             Assert.IsNotNull(recognitionEvent);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsTrue(recognitionEvent.Count > 0);
         }
 
@@ -1407,7 +1407,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             SpeechRecognitionEvent response = new SpeechRecognitionEvent();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1436,7 +1436,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             SpeechRecognitionEvent response = new SpeechRecognitionEvent();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1467,7 +1467,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<JObject>(Arg.Any<JObject>(), Arg.Any<MediaTypeHeaderValue>())
@@ -1486,7 +1486,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                           model: "name_of_model");
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsFalse(string.IsNullOrEmpty(result.CustomizationId));
         }
 
@@ -1506,7 +1506,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<JObject>(Arg.Any<JObject>(), Arg.Any<MediaTypeHeaderValue>())
@@ -1528,7 +1528,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                 });
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsFalse(string.IsNullOrEmpty(result.CustomizationId));
         }
 
@@ -1548,7 +1548,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -1586,7 +1586,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
@@ -1624,7 +1624,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1676,7 +1676,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1694,7 +1694,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Customization);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -1710,7 +1710,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             Customizations response = new Customizations();
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1738,7 +1738,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1779,7 +1779,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             };
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1797,7 +1797,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.CustomizationId);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -1811,7 +1811,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             #endregion
@@ -1833,7 +1833,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1860,7 +1860,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1875,7 +1875,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.TrainCustomModel("custom_model_id");
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -1889,7 +1889,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1904,7 +1904,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.TrainCustomModel(null);
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ServiceResponseException))]
@@ -1918,7 +1918,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -1944,7 +1944,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1959,7 +1959,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.ResetCustomModel("custom_model_id");
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -1973,7 +1973,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -1988,7 +1988,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.ResetCustomModel(null);
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ServiceResponseException))]
@@ -2002,7 +2002,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2028,7 +2028,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -2043,7 +2043,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.UpgradeCustomModel("custom_model_id");
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -2057,7 +2057,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -2084,7 +2084,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2110,7 +2110,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -2125,7 +2125,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.DeleteCustomModel("custom_model_id");
 
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -2139,7 +2139,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
@@ -2166,7 +2166,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2190,7 +2190,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>());
+            client.Post(Arg.Any<string>());
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
                    .Returns(request);
@@ -2205,7 +2205,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.AddCorpus("customization_id", "corpus_name", true, new FileStream("body", FileMode.Create));
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -2217,7 +2217,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>());
+            client.Post(Arg.Any<string>());
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
                    .Returns(request);
@@ -2242,7 +2242,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>());
+            client.Post(Arg.Any<string>());
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
                    .Returns(request);
@@ -2267,7 +2267,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>());
+            client.Post(Arg.Any<string>());
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
                    .Returns(request);
@@ -2292,7 +2292,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>());
+            client.Post(Arg.Any<string>());
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
                    .Returns(request);
@@ -2317,7 +2317,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>());
+            client.Post(Arg.Any<string>());
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<object>())
                    .Returns(request);
@@ -2342,7 +2342,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                  .Returns(x =>
                  {
                      throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2364,7 +2364,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpora response =
@@ -2391,7 +2391,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var result =
                 service.ListCorpora("customization_id");
 
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.CorporaProperty);
             Assert.IsTrue(result.CorporaProperty.Count == 1);
@@ -2406,7 +2406,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpora response =
@@ -2443,7 +2443,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpora response =
@@ -2480,7 +2480,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2503,7 +2503,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpus response =
@@ -2524,7 +2524,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var result =
                 service.GetCorpus("customization_id", "corpus_name");
 
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Error);
         }
@@ -2538,7 +2538,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpus response =
@@ -2569,7 +2569,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpus response =
@@ -2600,7 +2600,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpus response =
@@ -2631,7 +2631,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             Corpus response =
@@ -2662,7 +2662,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2685,7 +2685,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             request.AsString()
@@ -2695,7 +2695,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.DeleteCorpus("customization_id", "corpus_name");
 
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -2707,7 +2707,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             request.AsString()
@@ -2727,7 +2727,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             request.AsString()
@@ -2747,7 +2747,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             request.AsString()
@@ -2767,7 +2767,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             request.AsString()
@@ -2787,7 +2787,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -2809,7 +2809,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<Words>(Arg.Any<Words>())
@@ -2855,7 +2855,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                       }
                                   });
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -2867,7 +2867,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<Words>(Arg.Any<Words>())
@@ -2913,7 +2913,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                       }
                                   });
 
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -2925,7 +2925,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<Words>(Arg.Any<Words>())
@@ -2981,7 +2981,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<Words>(Arg.Any<Words>())
@@ -3004,7 +3004,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3059,7 +3059,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<WordDefinition>(Arg.Any<WordDefinition>())
@@ -3081,7 +3081,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                                              }
                                   });
 
-            client.Received().PutAsync(Arg.Any<string>());
+            client.Received().Put(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -3093,7 +3093,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<WordDefinition>(Arg.Any<WordDefinition>())
@@ -3125,7 +3125,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<WordDefinition>(Arg.Any<WordDefinition>())
@@ -3157,7 +3157,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<WordDefinition>(Arg.Any<WordDefinition>())
@@ -3189,7 +3189,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<WordDefinition>(Arg.Any<WordDefinition>())
@@ -3221,7 +3221,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithBody<Words>(Arg.Any<Words>())
@@ -3246,7 +3246,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PutAsync(Arg.Any<string>())
+            client.Put(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3277,7 +3277,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3321,7 +3321,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Words);
             Assert.IsTrue(result.Words.Count > 0);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod]
@@ -3333,7 +3333,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3377,7 +3377,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Words);
             Assert.IsTrue(result.Words.Count > 0);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod]
@@ -3389,7 +3389,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3433,7 +3433,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Words);
             Assert.IsTrue(result.Words.Count > 0);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod]
@@ -3445,7 +3445,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3489,7 +3489,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Words);
             Assert.IsTrue(result.Words.Count > 0);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod]
@@ -3501,7 +3501,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3545,7 +3545,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Words);
             Assert.IsTrue(result.Words.Count > 0);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod]
@@ -3557,7 +3557,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3601,7 +3601,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Words);
             Assert.IsTrue(result.Words.Count > 0);
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -3635,7 +3635,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3658,7 +3658,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(request);
             
             request.As<WordData>()
@@ -3690,7 +3690,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
             var result =
                 service.ListCustomWord("customization_id", "word_name");
 
-            client.Received().GetAsync(Arg.Any<string>());
+            client.Received().Get(Arg.Any<string>());
             Assert.IsNotNull(result);
             Assert.AreEqual(result.DisplayAs, "display_as");
         }
@@ -3744,7 +3744,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.GetAsync(Arg.Any<string>())
+            client.Get(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -3766,7 +3766,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(request);
 
             request.AsString()
@@ -3776,7 +3776,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
 
             service.DeleteCustomWord("customization_id", "word_name");
 
-            client.Received().DeleteAsync(Arg.Any<string>());
+            client.Received().Delete(Arg.Any<string>());
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -3828,7 +3828,7 @@ namespace IBM.WatsonDeveloperCloud.SpeechToText.UnitTest
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.DeleteAsync(Arg.Any<string>())
+            client.Delete(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),

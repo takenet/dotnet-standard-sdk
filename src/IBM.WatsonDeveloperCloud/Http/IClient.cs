@@ -34,20 +34,20 @@ namespace IBM.WatsonDeveloperCloud.Http
 
         IClient WithAuthentication(string userName, string password);
 
-        IRequest DeleteAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Delete(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest GetAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Get(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PostAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Post(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PostAsync<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Post<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PutAsync(string resource, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Put(string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest PutAsync<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Put<TBody>(string resource, TBody body, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest SendAsync(HttpMethod method, string resource, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Send(HttpMethod method, string resource, CancellationToken cancellationToken = default(CancellationToken));
 
-        IRequest SendAsync(HttpRequestMessage message, CancellationToken cancellationToken = default(CancellationToken));
+        IRequest Send(HttpRequestMessage message, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

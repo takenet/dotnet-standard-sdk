@@ -160,7 +160,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
 
             IRequest request = Substitute.For<IRequest>();
 
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -185,7 +185,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             var analyzeTone = service.Tone(toneInput, Arg.Any<string>(), Arg.Any<bool>());
 
             Assert.IsNotNull(analyzeTone);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsNotNull(analyzeTone.DocumentTone);
             Assert.IsNotNull(analyzeTone.DocumentTone.ToneCategories);
             Assert.IsTrue(analyzeTone.DocumentTone.ToneCategories.Count >= 1);
@@ -211,7 +211,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             IClient client = CreateClient();
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
@@ -347,7 +347,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
 
             IRequest request = Substitute.For<IRequest>();
 
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(request);
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -363,7 +363,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             var result = service.ToneChat(toneChatInput);
 
             Assert.IsNotNull(result);
-            client.Received().PostAsync(Arg.Any<string>());
+            client.Received().Post(Arg.Any<string>());
             Assert.IsTrue(result.UtterancesTone.Count >= 1);
             Assert.IsTrue(result.UtterancesTone[0].Tones.Count >= 1);
             Assert.IsTrue(result.UtterancesTone[0].Tones[0].ToneName == "string");
@@ -390,7 +390,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                   .Returns(client);
 
             IRequest request = Substitute.For<IRequest>();
-            client.PostAsync(Arg.Any<string>())
+            client.Post(Arg.Any<string>())
                   .Returns(x =>
                   {
                       throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),

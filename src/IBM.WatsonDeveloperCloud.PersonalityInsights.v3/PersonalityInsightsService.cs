@@ -79,7 +79,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v3/profile")
+                                .Post($"{this.Endpoint}/v3/profile")
                                 .WithArgument("version", VersionDate)
                                 .WithHeader("Content-Type", contentType)
                                 .WithHeader("Content-Language", contentLanguage)
